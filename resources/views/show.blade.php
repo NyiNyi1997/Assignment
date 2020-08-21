@@ -16,15 +16,16 @@
     </tr>
   </thead>
   @foreach($reg as $val)
+  
     <tr>
     <td>{{$val->name}}</td>
     <td>{{$val->email}}</td>
     <td>{{$val->password}}</td>
-    <td><a href="{{ URL('/users/{id}'.$val->id )}}">Edit</a></td>
-    <td><a href="{{ URL('/users/{id}'.$val->id )}}">Delete</a></td>
-    <td><a href="{{ URL('/users/{id}'.$val->id )}}">ForceDelete</a></td>
+    <td><a href="{{ URL('/users/'.$val->id )}}">Edit</a></td>
+    <td><a href="{{ URL('/users/delete'.$val->id )}}">Delete</a></td>
     </tr>
   @endforeach
   </div> 
   </table>
+  <button type="button" class="btn btn-primary">Excel Download</button>
   

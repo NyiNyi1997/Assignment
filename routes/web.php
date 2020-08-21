@@ -17,15 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users','userController@index');// user list
 
-Route::get('/users/reg', function () {// register form
+
+Route::get('/users', function () {// register form
     return view('userRegister');
 });
+
+
+
 Route::post('/users/reg','userController@store'); //insert
 
-Route::get('/users/{id}','userController@show'); //edit
+Route::get('/users/reg','userController@index');// user list
+
+Route::get('/users/{id}','userController@edit'); //edit
 
 Route::put('/users/{id}','userController@update'); //update
 
-Route::delete('/users/{id}','userController@delete'); //delete
+//Route::delete('/users/{id}','userController@delete')->name('fdelete'); //delete
+

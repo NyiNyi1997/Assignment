@@ -4,8 +4,9 @@
 </head>
 
 <table>
+
 <div class='col-sm-6'> 
-<form method="post">
+<form method="post" action="{{url('/users/reg')}}">
 @csrf
   <div class="form-group">
     <label for="exampleInputEmail1">Name:</label>
@@ -22,5 +23,6 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>
+
 </table>
 </html>

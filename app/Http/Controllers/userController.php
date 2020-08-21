@@ -39,13 +39,14 @@ class userController extends Controller
     public function store(Request $request)
     {
         //
+        
         $reg=DB::table('userinfo')->insert([
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>$request->password,
-
         ]);
-        return redirect('users');
+ 
+        return redirect('/users/reg');
     }
 
     /**
@@ -57,8 +58,7 @@ class userController extends Controller
     public function show($id)
     {
         //
-        $reg=DB::table('userinfo')->where('id',$id)->get();
-            return view ('edit',['reg'=>$reg]);
+       
     }
 
     /**
@@ -69,12 +69,11 @@ class userController extends Controller
      */
     public function edit($id)
     {
-        //
-        // $edit = DB::table('userinfo')
-        // ->where('id', $id)
-        // ->update(['name'=>$request->name]);
-
-        // return $edit;
+       
+       
+        $reg=DB::table('userinfo')->where('id',$id)->get();
+        
+        return view ('edit',['reg'=>$reg]);
     }
 
     /**
@@ -87,6 +86,13 @@ class userController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $update=DB::table('userinfo')->where('id',$id)->update([
+            'name'=>$request->name,
+            'email'=>$request->roll,
+            'password'=>$request->password
+
+        ]);
+        return redirect()->route('show');
         
     }
 
@@ -97,9 +103,8 @@ class userController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function delete($id)
-    {
-        //
+    {   //
         $reg=DB::table('userinfo')->where('id',$id)->delete();
-        return redirect()->route('delete');
+        return redirect()->route('/users/reg');
     }
 }
