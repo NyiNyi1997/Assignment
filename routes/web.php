@@ -31,7 +31,9 @@ Route::get('/users/reg','userController@index');// user list
 
 Route::get('/users/{id}','userController@edit'); //edit
 
-Route::put('/users/{id}','userController@update'); //update
+Route::put('/users/update/{id}','userController@update'); //update
 
-//Route::delete('/users/{id}','userController@delete')->name('fdelete'); //delete
+Route::delete('/users/delete/{id}','userController@delete'); //delete
+
+Route::delete('/users/forcedelete/{id}','userController@destroy'); //forcedelete
 

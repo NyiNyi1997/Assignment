@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -86,13 +87,15 @@ class userController extends Controller
     public function update(Request $request, $id)
     {
         //
+       // dd($id);
+        
         $update=DB::table('userinfo')->where('id',$id)->update([
             'name'=>$request->name,
-            'email'=>$request->roll,
+            'email'=>$request->email,
             'password'=>$request->password
 
         ]);
-        return redirect()->route('show');
+        return redirect('/users/reg');
         
     }
 
@@ -105,6 +108,13 @@ class userController extends Controller
     public function delete($id)
     {   //
         $reg=DB::table('userinfo')->where('id',$id)->delete();
-        return redirect()->route('/users/reg');
+        return redirect('/users/reg');
+    }
+
+    public function destroy($id)
+    {   //
+       // dd($id);
+        $reg=DB::table('userinfo')->where('id',$id)->update(['deleted_at'=>Carbon::now()]);
+        return "Successful";
     }
 }
